@@ -51,6 +51,7 @@ function createCardElement(data) {
     const downloadBtn = clone.querySelector('.btn-download');
     const tag = clone.querySelector('.tag-info');
     const card = clone.querySelector('.pricing-card');
+    const oldPrice = clone.querySelector('.old-price');
 
     // Populate data
     price.textContent = data.amount ? `$${data.amount}` : 'N/A';
@@ -66,6 +67,7 @@ function createCardElement(data) {
 
     if (data.price_key === '50%') {
         card.classList.add('has-discount');
+        oldPrice.textContent = `$${data.amount * 2}`;
     }
 
     downloadBtn.addEventListener('click', () => {
@@ -79,5 +81,5 @@ function createCardElement(data) {
 }
 
 function extractTimePeriod(licenseName) {
-    return /monthly/i.test(licenseName) ? '/per month' : '/per year';
+    return /monthly/i.test(licenseName) ? '/mo' : '/per year';
 }
