@@ -1,0 +1,182 @@
+.pricing-card {
+  position: relative;
+  width: 360px;
+  height: 269px;
+}
+
+.card-image {
+  position: absolute;
+  top: -14px;
+  left: 46px;
+  z-index: 1000;
+}
+
+.card-header {
+  position: relative;
+  left: 60px;
+  width: 240px;
+  height: 100px;
+  background-color: var(--white);
+  box-shadow: 0 0 4px 0 rgb(0 0 0 / 25%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-family-bebas);
+  font-weight: var(--font-weight-700);
+  line-height: 100%;
+
+  .tag-info {
+    position: relative;
+    right: -80px;
+    width: 80px;
+    height: 20px;
+    background-color: var(--yellow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    color: var(--dark-gray);
+    font-family: var(--font-family-roboto);
+    font-weight: var(--font-weight-700);
+    line-height: 100%;
+  }
+
+  .price-wrapper {
+    display: flex;
+    align-items: baseline;
+
+    .price {
+      display: flex;
+      align-items: center;
+      font-size: 48px;
+      height: 48px;
+    }
+
+    .time-period {
+      display: flex;
+      align-items: center;
+      font-size: 18px;
+      height: 18px;
+    }
+  }
+
+}
+
+.pricing-card .card-body {
+  position: relative;
+  top: -50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 360px;
+  height: 220px;
+  background-color: var(--gray);
+  z-index: 1;
+}
+
+.pricing-card .card-body .description {
+  font-family: var(--font-family-roboto);
+  font-weight: var(--font-weight-400);
+  font-size: 18px;
+  line-height: 100%;
+}
+
+.pricing-card .card-body .condition {
+  font-family: var(--font-family-roboto);
+  font-weight: var(--font-weight-700);
+  font-size: 18px;
+  line-height: 100%;
+}
+
+.btn-download {
+  width: 190px;
+  height: 50px;
+  border-radius: 25px;
+  background: linear-gradient(0, #130999, #174D8F, #1A7F87, #1C9E83, #1DAA81);
+  font-family: var(--font-family-roboto);
+  font-weight: var(--font-weight-500);
+  font-size: 18px;
+  line-height: 100%;
+  text-transform: uppercase;
+  color: var(--white);
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 15px;
+  padding: 0 10px 0 0;
+
+  &:hover {
+    box-shadow: 0 4px 4px 0 rgb(0 0 0 / 25%);
+    transition: box-shadow 0.2s ease;
+  }
+}
+
+.btn-download .icon {
+  width: 30px;
+  height: 30px;
+}
+
+.pointer {
+  --hint-top: 30px;
+  --hint-right: 132px;
+  --hint-size: 184px;
+
+  position: fixed;
+  top: var(--hint-top);
+  right: var(--hint-right);
+  width: var(--hint-size);
+  height: auto;
+  z-index: calc(var(--zindex-sticky) + 10);
+  pointer-events: none;
+  animation: hint-bob 1.6s ease-in-out infinite;
+}
+
+:root[data-browser='chrome'] .pointer {
+  --hint-right: 132px;
+}
+
+:root[data-browser='edge'] .pointer {
+  --hint-right: 168px;
+}
+
+:root[data-browser='firefox'] .pointer {
+  --hint-right: 108px;
+}
+
+:root[data-browser='safari'] .pointer {
+  --hint-right: 84px;
+}
+
+@media (width <= 900px) {
+  .pointer {
+    --hint-size: 130px;
+    --hint-right: 72px;
+  }
+}
+
+@media (width <= 620px) {
+  .pointer {
+    display: none !important;
+  }
+}
+
+@keyframes hint-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pointer {
+    animation: none;
+  }
+}

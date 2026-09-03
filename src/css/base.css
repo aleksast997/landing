@@ -1,0 +1,43 @@
+:root {
+  --primary: #2f5fa8;
+
+  --font-family-base: 'Inter', system-ui, sans-serif;
+  --font-family-roboto: 'Roboto', sans-serif;
+  --font-family-open-sans: 'Open Sans', sans-serif;
+  --font-family-bebas: 'Bebas Neue', sans-serif;
+
+  --font-weight-300: 300;
+  --font-weight-400: 400;
+  --font-weight-500: 500;
+  --font-weight-700: 700;
+
+  --border-radius-lg: 1rem;
+
+  --black: #000;
+  --white: #fff;
+  --yellow: #FFB800;
+  --gray: #F3F5F6;
+  --dark-gray: #2B2929;
+
+  --zindex-sticky: 1020;
+}
+
+/* Minimal stand-in for the parts of Bootstrap's reboot the layout relied on. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family-base);
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}

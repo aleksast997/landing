@@ -1,0 +1,67 @@
+:is(.site-header, .site-footer) {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 16px;
+  background-color: var(--black);
+}
+
+/* Shared text type: .main-text and .sub-text had byte-identical typography.
+   Kept ahead of the .site-footer override below, which relies on source order
+   to win at equal (0,2,0) specificity. */
+:is(.site-header, .site-footer) :is(.main-text, .sub-text) {
+  font-family: var(--font-family-roboto);
+  font-weight: var(--font-weight-500);
+  font-size: 21px;
+  line-height: 100%;
+  text-transform: uppercase;
+}
+
+:is(.site-header, .site-footer) .main-text {
+  color: var(--yellow);
+  padding-left: 15%;
+}
+
+:is(.site-header, .site-footer) .separator {
+  color: var(--white);
+  border: 1px solid var(--white);
+  rotate: -90deg;
+  width: 30px;
+  height: 0;
+}
+
+:is(.site-header, .site-footer) .sub-text {
+  display: flex;
+  gap: 0;
+  color: var(--white);
+}
+
+:is(.site-header, .site-footer) .sub-text .trademark {
+  color: var(--white);
+  font-family: var(--font-family-open-sans);
+  font-weight: var(--font-weight-300);
+  font-size: 14px;
+  line-height: 100%;
+  text-transform: none;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--zindex-sticky);
+  height: 49px;
+}
+
+.site-footer {
+  height: 70px;
+  flex-direction: column;
+  align-items: start;
+
+  .sub-text {
+    font-size: 14px;
+    font-family: var(--font-family-roboto);
+    font-weight: var(--font-weight-400);
+    line-height: 27px;
+    padding-left: 15%;
+  }
+}
