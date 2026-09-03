@@ -1,7 +1,6 @@
 :root {
   --primary: #2f5fa8;
 
-  --font-family-base: 'Inter', system-ui, sans-serif;
   --font-family-roboto: 'Roboto', sans-serif;
   --font-family-open-sans: 'Open Sans', sans-serif;
   --font-family-bebas: 'Bebas Neue', sans-serif;
@@ -22,7 +21,6 @@
   --zindex-sticky: 1020;
 }
 
-/* Minimal stand-in for the parts of Bootstrap's reboot the layout relied on. */
 *,
 *::before,
 *::after {
@@ -31,7 +29,7 @@
 
 body {
   margin: 0;
-  font-family: var(--font-family-base);
+  font-family: var(--font-family-roboto);
 }
 
 button {

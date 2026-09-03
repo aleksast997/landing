@@ -6,9 +6,6 @@
   background-color: var(--black);
 }
 
-/* Shared text type: .main-text and .sub-text had byte-identical typography.
-   Kept ahead of the .site-footer override below, which relies on source order
-   to win at equal (0,2,0) specificity. */
 :is(.site-header, .site-footer) :is(.main-text, .sub-text) {
   font-family: var(--font-family-roboto);
   font-weight: var(--font-weight-500);
