@@ -11,9 +11,15 @@ document.addEventListener('DOMContentLoaded', renderPricingCards);
 
 async function renderPricingCards() {
     const container = document.getElementById('cards-container');
+    if (!container) return;
 
     try {
         const response = await fetch('https://veryfast.io/t/front_test_api.php');
+
+        if (!response.ok) {
+            throw new Error(`Request failed: ${response.status} ${response.statusText}`);
+        }
+
         const data = await response.json();
 
         container.innerHTML = '';
@@ -44,26 +50,22 @@ function createCardElement(data) {
     const condition = clone.querySelector('.condition');
     const downloadBtn = clone.querySelector('.btn-download');
     const tag = clone.querySelector('.tag-info');
-    const cardHeader = clone.querySelector('.card-header');
-    const priceWrapper = clone.querySelector('.price-wrapper');
-    const cardImage = clone.querySelector('.card-image');
+    const card = clone.querySelector('.pricing-card');
 
     // Populate data
-    price.textContent = '$' + data.amount || 'Default Title';
+    price.textContent = data.amount ? `$${data.amount}` : 'N/A';
     time.textContent = extractTimePeriod(data.license_name);
     description.textContent = data.name_prod;
     condition.textContent = data.license_name;
 
+    // Presentation lives in components.css; JS only sets the state.
     if (data.is_best) {
+        card.classList.add('is-best');
         tag.textContent = 'Best Value';
-        cardHeader.style.justifyContent = 'space-between';
-        priceWrapper.style.marginBottom = '26px';
-    } else {
-        tag.style.display = 'none';
     }
 
-    if (data.price_key !== '50%') {
-        cardImage.style.display = 'none';
+    if (data.price_key === '50%') {
+        card.classList.add('has-discount');
     }
 
     downloadBtn.addEventListener('click', () => {
@@ -76,18 +78,6 @@ function createCardElement(data) {
     return clone;
 }
 
-function extractTimePeriod(timeString) {
-    const words = timeString.trim().toLowerCase().split(' ');
-
-    let result = '';
-
-    words.find((word) => {
-        if (word === 'monthly' || word === '(monthly)') {
-            result = '/per month';
-        } else {
-            result = '/per year';
-        }
-    });
-
-    return result;
+function extractTimePeriod(licenseName) {
+    return /monthly/i.test(licenseName) ? '/per month' : '/per year';
 }

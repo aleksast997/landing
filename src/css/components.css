@@ -92,6 +92,22 @@
   line-height: 100%;
 }
 
+.pricing-card.is-best .card-header {
+  justify-content: space-between;
+}
+
+.pricing-card.is-best .price-wrapper {
+  margin-bottom: 26px;
+}
+
+.pricing-card:not(.is-best) .tag-info {
+  display: none;
+}
+
+.pricing-card:not(.has-discount) .card-image {
+  display: none;
+}
+
 .btn-download {
   width: 190px;
   height: 50px;
