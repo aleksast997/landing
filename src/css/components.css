@@ -71,6 +71,7 @@
     letter-spacing: 0;
     line-height: 100%;
     font-weight: var(--font-weight-400);
+    margin-bottom: 10px;
   }
 }
 

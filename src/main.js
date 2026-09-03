@@ -52,6 +52,7 @@ function createCardElement(data) {
     const tag = clone.querySelector('.tag-info');
     const card = clone.querySelector('.pricing-card');
     const oldPrice = clone.querySelector('.old-price');
+    const cardHeader = clone.querySelector('.card-header');
 
     // Populate data
     price.textContent = data.amount ? `$${data.amount}` : 'N/A';
@@ -68,6 +69,9 @@ function createCardElement(data) {
     if (data.price_key === '50%') {
         card.classList.add('has-discount');
         oldPrice.textContent = `$${data.amount * 2}`;
+        cardHeader.style.justifyContent = 'end';
+    } else {
+        oldPrice.style.display = 'none';
     }
 
     downloadBtn.addEventListener('click', () => {
